@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -92,10 +93,11 @@ public class Weapon : MonoBehaviour
         if (currentShootingMode == ShootingMode.Burst && burstBulletsLeft > 1)
         {
             burstBulletsLeft--;
-            Invoke("FireWweapon", shootingDelay);
+            Invoke("Fireweapon", shootingDelay);
         }
 
     }
+
 
     private void ResetShot()
     {
