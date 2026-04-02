@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class Buller : MonoBehaviour
 {
-    void OnDrawGizmos()
+    private void OnCollisionEnter(Collision collision)
     {
-        // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.forward * 500f);
+        if (collision.gameObject.CompareTag("target"))
+        {
+            print("hit" + collision.gameObject.name + "!");
+            Destroy(gameObject);
+        }
     }
 }
