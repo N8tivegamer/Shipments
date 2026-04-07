@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Buller : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {

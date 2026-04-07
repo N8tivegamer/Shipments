@@ -1,4 +1,6 @@
+using StarterAssets;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class weapon : MonoBehaviour
@@ -16,6 +18,19 @@ public class weapon : MonoBehaviour
 
     public float bulletPrefabLifeTime = 3f;
 
+    private StarterAssetsInputs inputs;
+
+    public float reloadTime;
+    public int magazineSize = 32, bulletsLeft;
+    public bool isReloading;
+
+    public int totalAmmo = 64;
+
+    private void Start()
+    {
+        inputs = transform.parent.GetComponent<StarterAssetsInputs>();
+    }
+
 
     private void OnDrawGizmosSelected()
     {
@@ -23,17 +38,40 @@ public class weapon : MonoBehaviour
         Gizmos.DrawLine(transform.position,transform.forward * 500f);
     }
 
+
+    private void Awake()
+    {
+        bulletsLeft = magazineSize;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (inputs.fire)
         {
             FireWeapon();
         }
+
+        if (inputs.reloading)
+        {
+            Reload();
+        }
+
+
+        if( AmmoManager.Instance.ammoDisplay != null)
+        {
+            AmmoManager.Instance. ammoDisplay.text = $"{bulletsLeft}/{totalAmmo}";
+        }
+        
+         
+
     }
 
     private void FireWeapon()
     {
+        if (bulletsLeft <= 0) {return; }
+
+        bulletsLeft--;
+
         // Instantiate the bullet
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
         // Shoot the bullet
@@ -43,6 +81,27 @@ public class weapon : MonoBehaviour
 
     }
 
+    private void Reload()
+    {
+        isReloading = true;
+        Invoke("ReloadCompleted", reloadTime);
+    }
+
+    private void ReloadCompleted()
+    {
+        isReloading = false;
+        if (totalAmmo < magazineSize)
+        {
+            bulletsLeft = totalAmmo;
+            totalAmmo = 0;
+        }
+        else 
+        { 
+            bulletsLeft = magazineSize;
+            totalAmmo -= magazineSize;
+        }
+        
+    }
 
     // A Coroutine that waits for a specified time before destroying the object
     private IEnumerator DestroyBulletAfterTime (GameObject bullet, float delay)

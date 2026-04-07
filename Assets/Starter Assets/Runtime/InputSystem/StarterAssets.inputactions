@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "StarterAssets",
     "maps": [
         {
@@ -11,7 +12,8 @@
                     "id": "6bc1aaf4-b110-4ff7-891e-5b9fe6f32c4d",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Look",
@@ -19,15 +21,17 @@
                     "id": "2690c379-f54d-45be-a724-414123833eb4",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
                     "type": "Button",
                     "id": "8c4abdf8-4099-493a-aa1a-129acec7c3df",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Sprint",
@@ -35,7 +39,26 @@
                     "id": "980e881e-182c-404c-8cbf-3d09fdb48fef",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "87a34d69-78a8-4305-8c28-122c4f8b18b4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reloading",
+                    "type": "Button",
+                    "id": "0847bbdc-3471-4ba6-904b-a9b2c6405c3b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -212,6 +235,50 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b18b3efc-1e55-4aa2-9d72-3da0357e6395",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3bcdae93-1354-4bda-aeea-4da2ef926b36",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ac9f902e-8344-420c-a460-7d72dfeb6492",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "Reloading",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66e4d754-fa01-42f6-9d86-3fba6cb41297",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Reloading",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
