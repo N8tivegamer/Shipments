@@ -51,7 +51,7 @@ public class weapon : MonoBehaviour
             FireWeapon();
         }
 
-        if (inputs.reloading)
+        if (inputs.reloading && isReloading == false && totalAmmo > 0 && bulletsLeft != magazineSize)
         {
             Reload();
         }
