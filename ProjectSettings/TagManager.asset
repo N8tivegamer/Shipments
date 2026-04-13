@@ -7,6 +7,10 @@ TagManager:
   - CinemachineTarget
   - FxTemporaire
   - Ground
+  - SpawnPoint
+  - SpawnPoints
+  - Enemy
+  - Patrol
   layers:
   - Default
   - TransparentFX

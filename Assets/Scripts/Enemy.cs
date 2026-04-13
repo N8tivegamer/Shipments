@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     private Transform target;  // Storage for the Player's position
     private NavMeshAgent ai; // Reference to the AI component on this object
 
-    public Transform patrolPoint;
+    public Transform PatrolPoint;
 
 
     public enum EnemyState
@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour
 
         distanceToTarget = Mathf.Abs(Vector3.Distance(target.position, transform.position));
 
+
+        PatrolPoint = GameObject.FindWithTag("Patrol").transform;
     }
 
     IEnumerator SwitchToPatrol()
@@ -84,12 +86,12 @@ public class Enemy : MonoBehaviour
                 } break;
 
             case EnemyState.Patrol:
-                float distanceToPatrolPoint = Mathf.Abs(Vector3.Distance(patrolPoint.position, transform.position));
+                float distanceToPatrolPoint = Mathf.Abs(Vector3.Distance(PatrolPoint.position, transform.position));
 
                 if (distanceToPatrolPoint > 2)
                 {
                     SwitchState(1);
-                    ai.SetDestination(patrolPoint.position);
+                    ai.SetDestination(PatrolPoint.position);
                 }
                 else
                 {
