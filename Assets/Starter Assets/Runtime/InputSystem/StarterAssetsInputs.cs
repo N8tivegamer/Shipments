@@ -1,11 +1,14 @@
+using UnityEditor.Build.Content;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 #endif
 
 namespace StarterAssets
 {
-	public class StarterAssetsInputs : MonoBehaviour
+	public class StarterAssetsInputs : MonoBehaviour, IDamagebale
+
 	{
 		[Header("Character Input Values")]
 		public Vector2 move;
@@ -15,8 +18,6 @@ namespace StarterAssets
 		public bool fire;
 		public bool reloading;
 
-		
-
 		[Header("Movement Settings")]
 		public bool analogMovement;
 
@@ -24,8 +25,12 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		 
+
+
+
 #if ENABLE_INPUT_SYSTEM
-		public void OnMove(InputValue value)
+        public void OnMove(InputValue value)
 		{
 			MoveInput(value.Get<Vector2>());
 		}

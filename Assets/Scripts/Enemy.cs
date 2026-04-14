@@ -19,14 +19,16 @@ public class Enemy : MonoBehaviour
         Chase,
         Attack
     }
-    
+
     public EnemyState enemyState;
 
     private Animator anim;
     private float distanceToTarget;
     private Coroutine idlerToPatrol;
 
-   
+
+
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -41,7 +43,7 @@ public class Enemy : MonoBehaviour
 
         ai = GetComponent<NavMeshAgent>();
         // Locate the Player by looking for the "Player" tag and grab its Transform
-        target = GameObject.FindWithTag("Player") .transform;
+        target = GameObject.FindWithTag("Player").transform;
 
         distanceToTarget = Mathf.Abs(Vector3.Distance(target.position, transform.position));
 
@@ -65,10 +67,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
-   // Tell the NavMeshAgent to calculate a path and move toward the player's current position
+        // Tell the NavMeshAgent to calculate a path and move toward the player's current position
         ai.SetDestination(target.position);
 
 
@@ -83,7 +87,8 @@ public class Enemy : MonoBehaviour
                 if (idlerToPatrol == null)
                 {
                     idlerToPatrol = StartCoroutine(SwitchToPatrol());
-                } break;
+                }
+                break;
 
             case EnemyState.Patrol:
                 float distanceToPatrolPoint = Mathf.Abs(Vector3.Distance(PatrolPoint.position, transform.position));
@@ -135,6 +140,19 @@ public class Enemy : MonoBehaviour
             default:
                 break;
         }
+
+
+        void OnCollisionEnter(Collision collision)
+        {
+            // Check if we hit the player
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                // Damage the player
+                PlayerManager.Instance.Damage(20f);
+
+                // Destroy this enemy
+                Destroy(gameObject);
+            }
+        }
     }
-    
-}
+  } 
