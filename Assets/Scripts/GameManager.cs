@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     // Singleton pattern to allow Spawner.cs to access GameManager.Instance
     public static GameManager Instance { get; private set; }
 
-    private static GameManager _instance;
-
     // Private static property with automatic getter and setter
     public static int CurrentRound { get; private set; }
 
@@ -24,13 +22,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // Setup the Singleton instance
-        if (_instance != null && _instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy( this.gameObject);
         }
         else
         {
-            _instance = this;
+            Instance = this;
         }
     }
 

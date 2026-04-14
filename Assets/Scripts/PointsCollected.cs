@@ -11,6 +11,7 @@ public class PointsCollected : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        pointsCollected = GetComponent<TextMeshPro>();
         pointsCollected.text = "Score:" + GameManager.Instance.currentPoints.ToString();
     }
 

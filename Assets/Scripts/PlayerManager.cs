@@ -4,16 +4,16 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour, IDamageable<float>
 {
 
-    private static PlayerManager _instance;
-
-    public static PlayerManager Instance
-    {
-        get { return _instance; }
-    }
-
+    public static PlayerManager Instance { get; private set; }
+       
     private float healthPoints = 100f;
 
     public Slider healthBar;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,9 +32,6 @@ public class PlayerManager : MonoBehaviour, IDamageable<float>
             GameManager.Instance.GameOver();
         }
     }
-
-
-
 
     public void Damage(float damageTaken)
     {

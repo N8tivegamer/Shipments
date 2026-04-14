@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Reflection;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using static Enemy;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable<float>
 {
     private Transform target;  // Storage for the Player's position
     private NavMeshAgent ai; // Reference to the AI component on this object
 
     public Transform PatrolPoint;
-
 
     public enum EnemyState
     {
@@ -27,8 +27,17 @@ public class Enemy : MonoBehaviour
     private Coroutine idlerToPatrol;
 
 
+    private float healthPoints = 50f;
 
+    public void Damage(float damageTaken)
+    {
+        healthPoints -= damageTaken;
 
+        if (healthPoints <= 0f)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -141,18 +150,33 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-
-        void OnCollisionEnter(Collision collision)
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        // Check if we hit the player
+        if (collision.gameObject.CompareTag("Player"))
         {
-            // Check if we hit the player
-            if (collision.gameObject.CompareTag("Player"))
-            {
-                // Damage the player
-                PlayerManager.Instance.Damage(20f);
+            // Damage the player
+            PlayerManager.Instance.Damage(20f);                              
 
-                // Destroy this enemy
-                Destroy(gameObject);
-            }
+            // Destroy this enemy
+            Destroy(gameObject);
         }
     }
-  } 
+
+    public void damage (float damageTaken)
+    {
+        healthPoints -= damageTaken;
+
+        if (healthPoints <= 0f)
+        {
+            Die();
+        }
+    }
+
+
+    void Die() 
+    {
+        Destroy(gameObject);
+    }
+} 
