@@ -6,12 +6,12 @@ using System.Collections;
 
 public class PointsCollected : MonoBehaviour
 {
-    private TextMeshPro pointsCollected;
+    private TextMeshProUGUI pointsCollected;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        pointsCollected = GetComponent<TextMeshPro>();
+        pointsCollected  = GetComponent<TextMeshProUGUI>();
         pointsCollected.text = "Score:" + GameManager.Instance.currentPoints.ToString();
     }
 

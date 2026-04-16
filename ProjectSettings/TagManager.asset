@@ -11,6 +11,7 @@ TagManager:
   - SpawnPoints
   - Enemy
   - Patrol
+  - ponitsCollected
   layers:
   - Default
   - TransparentFX

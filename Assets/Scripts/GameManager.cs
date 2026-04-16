@@ -19,17 +19,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverScreen;
 
+    
     private void Awake()
     {
-        // Setup the Singleton instance
-        if (Instance != null && Instance != this)
+        if (Instance != null && Instance != this )
         {
-            Destroy( this.gameObject);
+            Destroy(this.gameObject);
+
         }
         else
-        {
-            Instance = this;
-        }
+        {Instance = this; }    
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -78,4 +77,5 @@ public class GameManager : MonoBehaviour
     {
         CurrentRound++;
     }
+
 }
