@@ -566,7 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   waveTxt: {fileID: 722068251}
-  currentPoints: 0
+  currentPoints: 5
   gameOverScreen: {fileID: 2065748469}
 --- !u!1001 &178565409
 PrefabInstance:

@@ -4,6 +4,10 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour, IDamageable<float>
 {
 
+    private Player player;
+    private int currentPoints;
+
+
     public static PlayerManager Instance { get; private set; }
        
     private float healthPoints = 100f;
@@ -15,9 +19,24 @@ public class PlayerManager : MonoBehaviour, IDamageable<float>
         Instance = this;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public void SavePlayerData()
     {
+        SaveSystem.SavePlayer(player);
+    }
+
+    // Updates total points
+    private void UpdateTotalPoints()
+    {
+        player.points += currentPoints;
+        currentPoints = 0;
+
+    }
+
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
+    {
+        player = Player.Instance;
         healthBar.value = healthPoints;
     }
 
@@ -31,6 +50,13 @@ public class PlayerManager : MonoBehaviour, IDamageable<float>
         {
             GameManager.Instance.GameOver();
         }
+
+        if (currentPoints > 0)
+        {
+            UpdateTotalPoints();
+            SavePlayerData();
+        }
+
     }
 
     public void Damage(float damageTaken)

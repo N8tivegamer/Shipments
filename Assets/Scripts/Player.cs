@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public int coins = 0;
     public int currentBlaster = 0;
     public int highestWave = 0;
-    public string playerName = "Playername";
+    public string playerName = "N8tive";
     public int[] ownedBlaster = { 1, 0, 0, 0, 0, 0, 0 };
 
 
