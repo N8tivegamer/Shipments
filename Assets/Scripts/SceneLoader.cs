@@ -11,6 +11,6 @@ public class SceneLoader : MonoBehaviour
 
     public static void PlayGame()
     {
-        SceneManager.LoadScene("Game"); // Make sure this matches your scene name
+        SceneManager.LoadScene("shipments"); // Make sure this matches your scene name
     }
 }

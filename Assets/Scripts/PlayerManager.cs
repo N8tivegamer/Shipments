@@ -26,12 +26,7 @@ public class PlayerManager : MonoBehaviour, IDamageable<float>
     }
 
     // Updates total points
-    private void UpdateTotalPoints()
-    {
-        player.points += currentPoints;
-        currentPoints = 0;
-
-    }
+   
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -51,12 +46,7 @@ public class PlayerManager : MonoBehaviour, IDamageable<float>
             GameManager.Instance.GameOver();
         }
 
-        if (currentPoints > 0)
-        {
-            UpdateTotalPoints();
-            SavePlayerData();
-        }
-
+   
     }
 
     public void Damage(float damageTaken)

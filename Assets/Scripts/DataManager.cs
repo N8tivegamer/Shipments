@@ -7,9 +7,6 @@ public class DataManager : MonoBehaviour
 
     public static DataManager Instance {  get { return instance; } }
 
-    public TextMeshProUGUI coinsText;
-    public TextMeshProUGUI pointsText;
-
 
 
     private void Awake()
@@ -27,14 +24,7 @@ public class DataManager : MonoBehaviour
 
     void Start()
     {
-        if (coinsText)
-        {
-            coinsText.text = "Coins:" + Player.Instance.coins;
-        }
-        if (pointsText)
-        {
-            pointsText.text = "Points:" + Player.Instance.points;
-        }
+        
     }
 
 
@@ -44,13 +34,5 @@ public class DataManager : MonoBehaviour
     void Update()
     {
 
-        if (coinsText)
-        {
-            coinsText.text = "Coins:" + Player.Instance.coins;
-        }
-        if (pointsText)
-        {
-            pointsText.text = "Points:" + Player.Instance.points;
-        }
     }
 }

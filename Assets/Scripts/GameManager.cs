@@ -19,7 +19,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverScreen;
 
-    
+    public int highScore;
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this )
@@ -36,10 +38,13 @@ public class GameManager : MonoBehaviour
     {
         // Initialize the round and the UI text
         CurrentRound = 1;
-        waveTxt.text = "Wave: " + CurrentRound.ToString();
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
 
 
         gameOverScreen.SetActive(false);
+
+        Debug.Log("Loaded HighScore: " + PlayerPrefs.GetInt("HighScore", 0));
+        
     }
 
 
@@ -47,6 +52,14 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0f;
+
+        if (currentPoints > highScore)
+        {
+            
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+        }
+
 
         // Show Game Over UI
         gameOverScreen.SetActive(true);
@@ -76,6 +89,8 @@ public class GameManager : MonoBehaviour
     public void NextWave()
     {
         CurrentRound++;
+        Player.Instance.highestWave = CurrentRound;
+        Player.Instance.SavePlayer();
     }
 
 }

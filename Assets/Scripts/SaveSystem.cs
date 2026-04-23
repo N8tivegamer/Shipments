@@ -33,8 +33,8 @@ public class SaveSystem : MonoBehaviour
         }
         else 
         {
-            Debug.LogError("Save file not found in" +  path);
-            return null;
+            SaveData data = new SaveData();
+            return data;
         }
     } 
 

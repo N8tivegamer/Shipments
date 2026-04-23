@@ -1,32 +1,46 @@
 using UnityEditor;
+using UnityEditor.Overlays;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
     private static Player instance;
 
-    public static Player Instance {  get { return instance; } }
+    public static Player Instance { get { return instance; } }
 
-
-    public int points = 0;
-    public int coins = 0;
-    public int currentBlaster = 0;
     public int highestWave = 0;
-    public string playerName = "N8tive";
-    public int[] ownedBlaster = { 1, 0, 0, 0, 0, 0, 0 };
-
 
 
     private void Awake()
     {
         if (instance != null && instance != this)
         {
-            Destroy(this.gameObject); 
+            Destroy(this.gameObject);
         }
-        else 
+        else
         {
             instance = this;
 
         }
     }
+
+    private void Start()
+    {
+        LoadPlayer();
+    }
+
+    private void LoadPlayer()
+    {
+        SaveData data = SaveSystem.LoadPlayer();
+        highestWave = data.highestWave;
+    }
+
+    public void SavePlayer() 
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+
+    private void OnApplicationQuit() => SavePlayer();
 }

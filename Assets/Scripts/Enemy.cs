@@ -26,14 +26,13 @@ public class Enemy : MonoBehaviour, IDamageable<float>
     private float distanceToTarget;
     private Coroutine idlerToPatrol;
 
-
-    private float healthPoints = 50f;
-
+    public float health = 100f;
+    
     public void Damage(float damageTaken)
     {
-        healthPoints -= damageTaken;
+        health -= damageTaken;
 
-        if (healthPoints <= 0f)
+        if (health <= 0f)
         {
             Destroy(gameObject);
         }
@@ -82,7 +81,7 @@ public class Enemy : MonoBehaviour, IDamageable<float>
     void Update()
     {
         // Tell the NavMeshAgent to calculate a path and move toward the player's current position
-        ai.SetDestination(target.position);
+        //ai.SetDestination(target.position);
 
 
         distanceToTarget = Mathf.Abs(Vector3.Distance(target.position, transform.position));
@@ -166,9 +165,9 @@ public class Enemy : MonoBehaviour, IDamageable<float>
 
     public void damage (float damageTaken)
     {
-        healthPoints -= damageTaken;
+        health -= damageTaken;
 
-        if (healthPoints <= 0f)
+        if (health <= 0f)
         {
             Die();
         }
