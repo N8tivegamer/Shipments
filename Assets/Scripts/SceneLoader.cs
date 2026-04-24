@@ -13,4 +13,10 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("shipments"); // Make sure this matches your scene name
     }
+
+    public static void ToSettings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
+
 }
