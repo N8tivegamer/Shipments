@@ -12,7 +12,7 @@ public class AudioManager : MonoBehaviour
 
     public AudioMixer masterMixer;
 
-    public Slider muiscSlider, masterSlide;
+   
 
     private void Awake()
     {
@@ -33,11 +33,7 @@ public class AudioManager : MonoBehaviour
         masterMixer.SetFloat("MasterVol", PerferenceManager.GetMasterVolume());
         masterMixer.SetFloat("MusicVol", PerferenceManager.GetMusicVolume());
 
-        if (muiscSlider != null) 
-         PerferenceManager.GetMusicVolume();
-
-        if (masterSlide != null)
-            PerferenceManager.GetMasterVolume();
+       
     }
 
     public void ChangeSoundVolume(float soundLevel)

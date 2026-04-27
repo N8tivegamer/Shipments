@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,14 +9,28 @@ public class MainMenu : MonoBehaviour
 
     string newGameScene = "shipments";
 
+    public Slider muiscSlider, masterSlide;
 
-    
     void Start()
     {
         int highScore = Player.Instance.highestWave;
         highScoreUI.text = $"Top Wave Survived: {highScore}";
+
+        if (muiscSlider != null)
+           muiscSlider.value = PerferenceManager.GetMusicVolume();
+
+        if (masterSlide != null)
+           masterSlide.value =  PerferenceManager.GetMasterVolume();
     }
 
+    public void ChangeSoundVolume(float soundLevel)
+    {
+       AudioManager.Instance.ChangeSoundVolume(soundLevel);
+    }
+    public void ChangeMusicVolume(float soundLevel)
+    {
+        AudioManager.Instance.ChangeMusicVolume(soundLevel);
+    }
 
     public void StartNewGame()
     {
