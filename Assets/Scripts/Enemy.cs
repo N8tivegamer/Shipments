@@ -3,6 +3,7 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using static Enemy;
 
 public class Enemy : MonoBehaviour, IDamageable<float>
@@ -10,7 +11,11 @@ public class Enemy : MonoBehaviour, IDamageable<float>
     private Transform target;  // Storage for the Player's position
     private NavMeshAgent ai; // Reference to the AI component on this object
 
-    public Transform PatrolPoint;
+    public Transform patrolPoint;
+
+    public GameObject ammo;
+
+    public Slider healthBar;
 
     public enum EnemyState
     {
@@ -31,9 +36,11 @@ public class Enemy : MonoBehaviour, IDamageable<float>
     public void Damage(float damageTaken)
     {
         health -= damageTaken;
-
+        healthBar.value = health;
         if (health <= 0f)
         {
+            Instantiate(ammo, transform.position + new Vector3(0,1,0), Quaternion.identity, null);
+            Debug.Log("AmmoDrop");
             Destroy(gameObject);
         }
     }
@@ -56,7 +63,7 @@ public class Enemy : MonoBehaviour, IDamageable<float>
         distanceToTarget = Mathf.Abs(Vector3.Distance(target.position, transform.position));
 
 
-        PatrolPoint = GameObject.FindWithTag("Patrol").transform;
+        patrolPoint = GameObject.FindWithTag("Patrol").transform;
     }
 
     IEnumerator SwitchToPatrol()
@@ -99,12 +106,12 @@ public class Enemy : MonoBehaviour, IDamageable<float>
                 break;
 
             case EnemyState.Patrol:
-                float distanceToPatrolPoint = Mathf.Abs(Vector3.Distance(PatrolPoint.position, transform.position));
+                float distanceToPatrolPoint = Mathf.Abs(Vector3.Distance(patrolPoint.position, transform.position));
 
                 if (distanceToPatrolPoint > 2)
                 {
                     SwitchState(1);
-                    ai.SetDestination(PatrolPoint.position);
+                    ai.SetDestination(patrolPoint.position);
                 }
                 else
                 {

@@ -18,5 +18,6 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Settings");
     }
+  
 
 }

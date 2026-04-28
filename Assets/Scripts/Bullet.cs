@@ -6,8 +6,8 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            print("hit" + collision.gameObject.name + "!");
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<Enemy>().Damage(20);
             Destroy(gameObject);
 
         }

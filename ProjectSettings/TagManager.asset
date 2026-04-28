@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Patrol
   - ponitsCollected
+  - Ammo
   layers:
   - Default
   - TransparentFX

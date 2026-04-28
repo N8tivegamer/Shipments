@@ -23,8 +23,10 @@ public class weapon : MonoBehaviour
     public float reloadTime;
     public int magazineSize = 32, bulletsLeft;
     public bool isReloading;
-
+    public float fireRate = 0.25f;
     public int totalAmmo = 64;
+
+    private float shootTime = 0;
 
     private void Start()
     {
@@ -46,7 +48,7 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputs.fire)
+        if (inputs.fire && shootTime <= 0)
         {
             FireWeapon();
         }
@@ -54,6 +56,11 @@ public class weapon : MonoBehaviour
         if (inputs.reloading && isReloading == false && totalAmmo > 0 && bulletsLeft != magazineSize)
         {
             Reload();
+        }
+
+        if (shootTime > 0) 
+        {
+            shootTime -= Time.deltaTime;
         }
 
 
@@ -66,14 +73,24 @@ public class weapon : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if ( other.CompareTag("Ammo"))
+        {
+            Destroy(other.gameObject);
+            totalAmmo += 30;
+        }
+    }
+
     private void FireWeapon()
     {
         if (bulletsLeft <= 0) {return; }
 
+        shootTime = fireRate;
         bulletsLeft--;
 
         // Instantiate the bullet
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletPrefab.transform.rotation);
         // Shoot the bullet
         bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.forward.normalized * bulletVelocity, ForceMode.Impulse);
         //Destroy the bullet after some time
