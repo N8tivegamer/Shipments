@@ -19,6 +19,18 @@ public class PlayerManager : MonoBehaviour, IDamageable<float>
         Instance = this;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("firstaid"))
+        {
+            Destroy(other.gameObject);
+            healthPoints += 30;
+            if (healthPoints > 100)
+            {
+                healthPoints = 100;
+            }
+        }
+    }
 
     public void SavePlayerData()
     {

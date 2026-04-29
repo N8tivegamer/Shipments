@@ -13,6 +13,7 @@ TagManager:
   - Patrol
   - ponitsCollected
   - Ammo
+  - firstaid
   layers:
   - Default
   - TransparentFX

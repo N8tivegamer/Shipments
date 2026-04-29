@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour, IDamageable<float>
 
     public Transform patrolPoint;
 
-    public GameObject ammo;
+    public GameObject[] pickUps;
 
     public Slider healthBar;
 
@@ -39,8 +39,8 @@ public class Enemy : MonoBehaviour, IDamageable<float>
         healthBar.value = health;
         if (health <= 0f)
         {
-            Instantiate(ammo, transform.position + new Vector3(0,1,0), Quaternion.identity, null);
-            Debug.Log("AmmoDrop");
+            Instantiate(pickUps[Random.Range(0,2)], transform.position + new Vector3(0,1,0), Quaternion.identity, null);
+            
             Destroy(gameObject);
         }
     }
