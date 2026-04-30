@@ -30,7 +30,7 @@ public class weapon : MonoBehaviour
 
     private void Start()
     {
-        inputs = transform.parent.GetComponent<StarterAssetsInputs>();
+        inputs = transform.parent.parent.GetComponent<StarterAssetsInputs>();
     }
 
 
