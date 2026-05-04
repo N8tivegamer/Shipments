@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
     {
         masterMixer.SetFloat("MasterVol", PerferenceManager.GetMasterVolume());
         masterMixer.SetFloat("MusicVol", PerferenceManager.GetMusicVolume());
+        masterMixer.SetFloat("SFXVol", PerferenceManager.GetSFXVolume());
 
        
     }
@@ -46,6 +47,11 @@ public class AudioManager : MonoBehaviour
         masterMixer.SetFloat("MusicVol", soundLevel);
         PerferenceManager.SetMusicVolume(soundLevel);
     }
-  
+
+    public void ChangeSFXVolume(float soundLevel)
+    {
+        masterMixer.SetFloat("SFXVol", soundLevel);
+        PerferenceManager.SetSFXVolume(soundLevel);
+    }
 
 }

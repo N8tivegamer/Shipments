@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     string newGameScene = "shipments";
 
-    public Slider muiscSlider, masterSlide;
+    public Slider muiscSlider, masterSlide, SFXSlide;
 
     void Start()
     {
@@ -21,6 +21,9 @@ public class MainMenu : MonoBehaviour
 
         if (masterSlide != null)
            masterSlide.value =  PerferenceManager.GetMasterVolume();
+
+        if (SFXSlide != null)
+           masterSlide.value =  PerferenceManager.GetSFXVolume();
     }
 
     public void ChangeSoundVolume(float soundLevel)
@@ -30,6 +33,10 @@ public class MainMenu : MonoBehaviour
     public void ChangeMusicVolume(float soundLevel)
     {
         AudioManager.Instance.ChangeMusicVolume(soundLevel);
+    }
+    public void ChangeSFXVolume(float soundLevel)
+    {
+        AudioManager.Instance.ChangeSFXVolume(soundLevel);
     }
 
     public void StartNewGame()
