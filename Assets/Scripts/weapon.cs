@@ -20,6 +20,9 @@ public class weapon : MonoBehaviour
 
     private StarterAssetsInputs inputs;
 
+    public AudioSource audioSource;
+   
+
     public float reloadTime;
     public int magazineSize = 32, bulletsLeft;
     public bool isReloading;
@@ -88,6 +91,8 @@ public class weapon : MonoBehaviour
 
         shootTime = fireRate;
         bulletsLeft--;
+
+        audioSource.Play();
 
         // Instantiate the bullet
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletPrefab.transform.rotation);

@@ -14,6 +14,8 @@ TagManager:
   - ponitsCollected
   - Ammo
   - firstaid
+  - primaryGun
+  - SecondaryGun
   layers:
   - Default
   - TransparentFX
