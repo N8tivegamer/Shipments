@@ -1774,6 +1774,8 @@ MonoBehaviour:
   - {fileID: 8824712936480800484, guid: 17b68c8702ab3dc49b3f279d878c2dc0, type: 3}
   - {fileID: 7033092027246454191, guid: cc133a720c0595441a143bfa4bca33c6, type: 3}
   - {fileID: 7033092027246454191, guid: cc133a720c0595441a143bfa4bca33c6, type: 3}
+  - {fileID: 7033092027246454191, guid: cc133a720c0595441a143bfa4bca33c6, type: 3}
+  - {fileID: 7033092027246454191, guid: cc133a720c0595441a143bfa4bca33c6, type: 3}
   healthBar: {fileID: 5512409675230610174}
   enemyState: 0
   health: 100

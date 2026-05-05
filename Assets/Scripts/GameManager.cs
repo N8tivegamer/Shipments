@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,13 +22,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this )
+        if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
 
         }
         else
-        {Instance = this; }    
+        { Instance = this; }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,13 +36,10 @@ public class GameManager : MonoBehaviour
     {
         // Initialize the round and the UI text
         CurrentRound = 1;
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
-
 
         gameOverScreen.SetActive(false);
-
-        Debug.Log("Loaded HighScore: " + PlayerPrefs.GetInt("HighScore", 0));
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
     }
 
 
@@ -53,21 +48,17 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        if (currentPoints > highScore)
-        {
-            
-            PlayerPrefs.SetInt("HighScore", highScore);
-            PlayerPrefs.Save();
-        }
-
 
         // Show Game Over UI
         gameOverScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
     public void GoHome()
     {
+        Time.timeScale = 1f;
+
         SceneLoader.ToMainMenu();
     }
 
@@ -82,15 +73,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //Keep the text updated every frame
+        //Keep the text updated every frame
         waveTxt.text = "Wave: " + CurrentRound.ToString();
     }
 
     public void NextWave()
     {
         CurrentRound++;
-        Player.Instance.highestWave = CurrentRound;
-        Player.Instance.SavePlayer();
+        if (CurrentRound >= highScore)
+        {
+            Player.Instance.highestWave = CurrentRound;
+            Player.Instance.SavePlayer();
+
+        }
+
     }
 
 }
