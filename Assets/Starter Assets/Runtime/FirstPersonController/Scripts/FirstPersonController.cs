@@ -101,6 +101,11 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+#if (UNITY_IOS || UNITY_ANDROID)
+			RotationSpeed = 45;
+#endif
+
 		}
 
 		private void Update()
