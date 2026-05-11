@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Switch",
+                    "type": "Button",
+                    "id": "6c4dbd94-7729-4917-9a02-e79f34d611a2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -356,6 +365,28 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "Reloading",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d44bab35-74cf-4b82-a98b-ce5ff7cc2e23",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b164f3ea-9977-4c5b-be16-70d88095a087",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

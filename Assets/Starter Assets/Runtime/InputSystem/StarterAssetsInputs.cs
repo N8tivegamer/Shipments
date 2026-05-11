@@ -16,6 +16,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool fire;
 		public bool reloading;
+		public bool switching;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -60,6 +61,10 @@ namespace StarterAssets
         {
             ReloadingInput(value.isPressed);
         }
+        public void OnSwitch(InputValue value)
+        {
+            SwitchingInput(value.isPressed);
+        }
 #endif
 
 
@@ -91,6 +96,10 @@ namespace StarterAssets
         public void ReloadingInput(bool newReloadingState)
         {
             reloading = newReloadingState;
+        }
+        public void SwitchingInput(bool newSwitchingState)
+        {
+			switching = newSwitchingState;
         }
 
         private void OnApplicationFocus(bool hasFocus)

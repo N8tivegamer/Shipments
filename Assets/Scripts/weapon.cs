@@ -22,8 +22,7 @@ public class weapon : MonoBehaviour
 
     public AudioSource audioSource;
 
-    public GameObject primaryWeapon;
-    public GameObject secondaryWeapon;
+    
 
     public float reloadTime;
     public int magazineSize = 32, bulletsLeft;

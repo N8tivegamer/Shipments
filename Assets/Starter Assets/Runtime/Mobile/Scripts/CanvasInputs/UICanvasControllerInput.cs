@@ -38,6 +38,10 @@ namespace StarterAssets
         {
             starterAssetsInputs.ReloadingInput(virtualReloadingState);
         }
+        public void VirtualSwithingInput(bool virtualReloadingState)
+        {
+            starterAssetsInputs.SwitchingInput(virtualReloadingState);
+        }
 
     }
 
