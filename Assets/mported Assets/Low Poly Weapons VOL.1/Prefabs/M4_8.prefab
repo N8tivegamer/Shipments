@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2131585474099781818}
   m_Layer: 0
   m_Name: M4_8
-  m_TagString: Untagged
+  m_TagString: primaryGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,6 +137,8 @@ MonoBehaviour:
   bulletVelocity: 30
   bulletPrefabLifeTime: 3
   audioSource: {fileID: 2131585474099781818}
+  primaryWeapon: {fileID: 1117582899397640}
+  secondaryWeapon: {fileID: 0}
   reloadTime: 1
   magazineSize: 35
   bulletsLeft: 0

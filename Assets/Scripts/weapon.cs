@@ -21,7 +21,9 @@ public class weapon : MonoBehaviour
     private StarterAssetsInputs inputs;
 
     public AudioSource audioSource;
-   
+
+    public GameObject primaryWeapon;
+    public GameObject secondaryWeapon;
 
     public float reloadTime;
     public int magazineSize = 32, bulletsLeft;
@@ -34,6 +36,7 @@ public class weapon : MonoBehaviour
     private void Start()
     {
         inputs = transform.parent.parent.GetComponent<StarterAssetsInputs>();
+     
     }
 
 
@@ -71,9 +74,8 @@ public class weapon : MonoBehaviour
         {
             AmmoManager.Instance. ammoDisplay.text = $"{bulletsLeft}/{totalAmmo}";
         }
-        
-         
 
+     
     }
 
     private void OnTriggerEnter(Collider other)
@@ -103,6 +105,8 @@ public class weapon : MonoBehaviour
 
     }
 
+
+   
     private void Reload()
     {
         isReloading = true;
